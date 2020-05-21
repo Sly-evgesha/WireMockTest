@@ -1,0 +1,33 @@
+﻿[
+  {
+    "Url": "/plaintext/mapping1",
+    "Headers": "text/plain",
+    "Status": 200
+  },
+
+  {
+    "Url": "/jsontext/mapping2",
+    "Headers": "application/json",
+    "Status": 200,
+    "QueryParam": "testqueryparam",
+    "QueryMatcher": "WildcardMatcher",
+    "QueryPattern": "*"
+  },
+
+  {
+    "Url": "/jsontext/mapping3",
+    "Headers": "text/plain",
+    "Status": 500,
+    "RequestBody": "TestValue1",
+    "RequestHeaderName": "CustomType",
+    "RequestHeaderValue": "CustomValue"
+  },
+
+  {
+    "Url": "/*",
+    "Status": 302,
+    "Delay": 10000,
+    "Matcher": "RegexMatcher"
+  }
+
+]
