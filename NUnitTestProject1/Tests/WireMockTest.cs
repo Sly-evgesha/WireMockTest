@@ -59,7 +59,7 @@ namespace WireMockTests.Tests
 
             await WireMockSteps.PostFirstMockMapping(testData1);
 
-            var response1 = RestApi.ExecuteRequest(url: Address, path: Mapping1Url, Method.GET);
+            var response1 = RestApi.ExecuteRequest(Mapping1Url, Method.GET);
             var actualData1 = new TestResponse(response1.StatusCode.ToString(), response1.Content, response1.ContentType);
             var expectedData1 = new TestResponse(ExpectedStatus1, Mapping1Message, Mapping1Headers);
 
@@ -79,7 +79,7 @@ namespace WireMockTests.Tests
 
             await WireMockSteps.PostSecondMockMapping(testData2);
 
-            var response2 = RestApi.ExecuteRequest(url: Address, path: Mapping2UrlWithQuery, Method.GET);
+            var response2 = RestApi.ExecuteRequest(Mapping2UrlWithQuery, Method.GET);
             var actualData2 = new TestResponse(response2.StatusCode.ToString(), response2.Content, response2.ContentType);
             var expectedData2 = new TestResponse(ExpectedStatus2, Mapping2Message, Mapping2Headers);
 
@@ -99,7 +99,7 @@ namespace WireMockTests.Tests
 
             await WireMockSteps.PostThirdMockMapping(testData3);
 
-            var response3 = RestApi.ExecuteRequest(Address, Mapping3Url, Method.POST, RequestBody, RequestHeaderName, RequestHeaderValue);
+            var response3 = RestApi.ExecuteRequest(Mapping3Url, Method.POST, RequestBody, RequestHeaderName, RequestHeaderValue);
             var actualData3 = new TestResponse(response3.StatusCode.ToString(), response3.Content, response3.ContentType);
             var expectedData3 = new TestResponse(ExpectedStatus3, Mapping3Message, Mapping3Headers);
 
@@ -117,7 +117,7 @@ namespace WireMockTests.Tests
 
             await WireMockSteps.PostFourthMockMapping(testData4);
 
-            var response4 = RestApi.ExecuteRequest(Address, Mapping4Url, Method.PUT);
+            var response4 = RestApi.ExecuteRequest(Mapping4Url, Method.PUT);
             var actualData4 = new TestResponse(response4.StatusCode.ToString(), response4.Content, response4.ContentType);
             var expectedData4 = new TestResponse(ExpectedStatus4, ExpectedBody4, Mapping4UrlToMapping1);
 

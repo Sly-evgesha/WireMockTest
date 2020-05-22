@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Utilities;
 using WireMock.Server;
 using WireMock.Settings;
 using WireMock.WireMock;
@@ -8,7 +9,10 @@ namespace WireMockTests.Tests
     public abstract class BaseTest
     {
         private WireMockServer Server { get; set; }
+
         public static string Address { get; set; }
+
+        public RestApi RestApi { get; set; }
 
         [SetUp]
         public void StartMockServer()
@@ -21,6 +25,8 @@ namespace WireMockTests.Tests
                 StartAdminInterface = true,
                 AllowCSharpCodeMatcher = true
             });
+
+            RestApi = new RestApi(Address);
         }
 
         [TearDown]

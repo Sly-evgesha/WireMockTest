@@ -3,22 +3,16 @@ using System.Net.Mime;
 
 namespace Utilities
 {
-    public sealed class RestApi
+    public class RestApi
     {
-        static RestApi()
+        private readonly RestClient restClient;
+
+        public RestApi(string url)
         {
+            restClient = new RestClient(url);
         }
 
-        private RestApi()
-        {
-        }
-
-        private static RestClient GetInstance(string url)
-        {
-            return new RestClient(url);
-        }
-
-        public static IRestResponse ExecuteRequest(string url, string path, Method method, string data = null,
+        public IRestResponse ExecuteRequest(string path, Method method, string data = null,
                                                    string headerName = null, string headerValue = null)
         {
             var request = new RestRequest(path, method);
@@ -33,7 +27,7 @@ namespace Utilities
                 request.AddHeader(headerName, headerValue);
             }
 
-            return GetInstance(url).Execute(request);
+            return restClient.Execute(request);
         }
     }
 }
