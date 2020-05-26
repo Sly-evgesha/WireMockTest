@@ -36,5 +36,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*NUnitTestProject1/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    projects: '**/NUnitTestProject1/*.csproj'
+    arguments: '--no-build --configuration $(buildConfiguration)'
